@@ -1,0 +1,31 @@
+<div>
+  <h1 mat-dialog-title> Adding Player</h1>
+  <hr>
+  <mat-dialog-content>
+    <form [formGroup]="form">
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="Name" #name required>
+      <mat-error *ngIf="!form.get('name').valid && form.get('name').touched">please enter a valid name</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="phone" placeholder="Phone" #phone required>
+      <mat-error *ngIf="!form.get('phone').valid && form.get('phone').touched"
+      >Enter a valid Phone number 05#-#######</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="imageUrl" placeholder="ImageURL" #image>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="rank" placeholder="Rank" #rank required type="number">
+      <mat-error *ngIf="!form.get('rank').valid && form.get('rank').touched"
+      >You must enter valid rank 1-5</mat-error>
+    </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  <hr>
+  <mat-dialog-actions>
+    <button mat-raised-button (click)="onAddingPlayer(name.value,phone.value,image.value,rank.value)">ADD PLAYER</button>&nbsp;
+    <button mat-raised-button (click)="onClosing()">CANCEL</button>
+  </mat-dialog-actions>
+</div>
+

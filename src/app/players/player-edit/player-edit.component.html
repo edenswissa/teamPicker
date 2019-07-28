@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+      <div class="form-group text-center">
+        <img [src]="imageUrl.value" [alt]="player.name"
+             (error)="img.src='../../assets/Unknown_Person.png'"
+             class="img-circle" width="100px" height="100px" #img>
+      </div>
+      <div class="form-group">
+        <label for="name">Name </label>
+        <input type="text" id="name" class="form-control" formControlName="name">
+        <span
+          class="help-block"
+          style="color: indianred"
+          *ngIf="!form.get('name').valid"> Please enter a valid name</span>
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input type="text" id="phoneNumber" class="form-control" formControlName="phoneNumber">
+        <span
+          class="help-block"
+          style="color: indianred"
+          *ngIf="!form.get('phoneNumber').valid"> Please enter a valid phone number (05#-#######)</span>
+      </div>
+      <div class="form-group">
+        <label for="imageUrl">Image Url </label>
+        <input type="text" id="imageUrl" class="form-control"
+               formControlName="imageUrl" #imageUrl>
+      </div>
+      <div class="form-group">
+        <label>Rank </label><br>
+        <span  *ngFor="let star of player.rank; let i = index;">
+            <i *ngIf="star === true" style="color:#f9e82c; font-size: 40px; cursor: pointer"
+               class="material-icons md-100"
+               (click)="onStarClick(i)">star</i>
+            <i *ngIf="star === false" style="font-size: 40px; cursor: pointer"
+               class="material-icons md-100"
+               (click)="onStarClick(i)">star_border</i>
+          </span>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-xs-12">
+            <button mat-raised-button color="primary"
+                    style="background-color: darkseagreen;"
+                    [disabled]="!this.form.valid"
+                    type="submit">Update</button>
+            <button mat-raised-button type="button" (click)="onCancel()" color="warn">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

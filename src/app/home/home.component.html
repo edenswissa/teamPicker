@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row spaceFromTop">
+    <div class="col-xs-6">
+      <mat-form-field class="full-width">
+        <input #HMPlayers matInput
+               placeholder="How many players In a Team"
+               [formControl]="error"
+               required type="number">
+        <mat-error *ngIf="error.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-xs-6">
+      <mat-form-field class="full-width">
+        <mat-select #HMTeams required placeholder="How many Teams">
+          <mat-option *ngFor="let number of numberOfTeams" [value]="number">
+            {{ number }}
+          </mat-option>
+          <mat-error *ngIf="error.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-xs-offset-5">
+      <button mat-raised-button
+              type="submit"
+              color="primary"
+              class="full-width"
+              (click)="onStartClick(HMPlayers.value,HMTeams.value)">Start</button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-12 quickStart">
+      <h3>Quick Start</h3>
+      <h5>3 teams</h5>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2 col-xs-offset-3">
+      <button mat-raised-button color="basic"
+              style="background-color: #cce8d0;"
+              (click)="onStartClick(7,3)"
+              class="full-width">7 Vs 7</button>
+    </div>
+    <div class="col-xs-2">
+      <button mat-raised-button color="basic"
+              style="background-color: #cce8d0;"
+              (click)="onStartClick(5,3)"
+              class="full-width">5 Vs 5</button>
+    </div>
+    <div class="col-xs-2">
+      <button mat-raised-button color="basic"
+              style="background-color: #cce8d0;"
+              (click)="onStartClick(4,3)"
+              class="full-width">4 Vs 4</button>
+    </div>
+  </div>
+</div>

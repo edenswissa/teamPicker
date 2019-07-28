@@ -1,0 +1,29 @@
+<br>
+<br>
+<mat-spinner *ngIf="isLoading === false" color="primary"></mat-spinner>
+<div *ngIf="isLoading === true">
+  <div class="row">
+    <div class="col-xs-12">
+      <button mat-raised-button color="primary" (click)="onNewPlayer()">New Player</button>
+      <button mat-raised-button
+              color="primary"
+              style="background-color: #8bc34a"
+              *ngIf="playersChanged"
+              (click)="onSave()">Save</button>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-5">
+      <app-player-list></app-player-list>
+    </div>
+    <div class="col-xs-7">
+      <router-outlet></router-outlet>
+      <ng-template #infoText>
+        <p>
+          please select player
+        </p>
+      </ng-template>
+    </div>
+  </div>
+</div>

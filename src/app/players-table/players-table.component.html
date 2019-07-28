@@ -1,0 +1,47 @@
+<br>
+<mat-spinner color="primary" style="margin: auto" *ngIf="isLoading === false"></mat-spinner>
+<div *ngIf="isLoading === true">
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table" #table>
+        <thead>
+        <tr style="background: #bed3f4;">
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Image</th>
+          <th scope="col">Rank</th>
+          <th scope="col">
+            <mat-checkbox (change)="onCheckAllChanged($event)">
+              Check all ({{indexesOfPlayers.length}}/{{players.length}})</mat-checkbox>
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let player of players; let i=index">
+          <th scope="row">{{i + 1}}</th>
+          <td>{{player.name | titlecase }}</td>
+          <td>{{player.phone}}</td>
+          <td><img src="{{player.imageUrl}}" (error)="img.src = '../../assets/Unknown_Person.png'" class="img-circle" width="50px" height="50px" #img alt=""></td>
+          <td>
+          <span  *ngFor="let star of player.rank">
+            <i *ngIf="star === true" style="color:#f9e82c; font-size: 28px;"
+               class="material-icons md-100">star</i>
+            <i *ngIf="star === false" style="font-size: 28px;"
+               class="material-icons md-100">star_border</i>
+          </span>
+          </td>
+          <td>
+            <mat-checkbox [checked]="checkAll" (change)="onCheckBoxChanged(i,$event)">Going</mat-checkbox>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12" style="text-align: center">
+      <button mat-raised-button color="basic" style="background-color: #b7d9e8;" (click)="onStart()">Start</button>
+    </div>
+  </div>
+</div>

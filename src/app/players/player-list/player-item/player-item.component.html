@@ -1,0 +1,17 @@
+<a style="cursor: pointer;"
+   [routerLink]="[name]"
+   routerLinkActive="active"
+   class="list-group-item clearfix">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{player.name | titlecase }}</h4>
+    <p class="list-group-item-text">{{ player.phone }}</p>
+  </div>
+  <span class="pull-right">
+        <img src="{{ player.imageUrl }}"
+             alt="{{ player.name }}"
+             (error)="img.src = '../../assets/Unknown_Person.png'"
+             class="img-responsive"
+             style="max-height: 50px"
+             #img>
+      </span>
+</a>

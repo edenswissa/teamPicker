@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-xs-12">
+        <img src="{{player.imageUrl}}"
+             alt="{{player.name}}"
+             (error)="img.src = '../../assets/Unknown_Person.png'"
+             class="img-circle center-block"
+             #img
+             style="height: 300px; width: 300px;">
+    <div class="row">
+      <div class="col-xs-12" style="text-align: center">
+        <h3>{{player.name | titlecase }}</h3>
+        <h4>{{player.phone}}</h4>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-12" style="text-align: center">
+        <span  *ngFor="let star of player.rank">
+                <i *ngIf="star === true" style="color:#f9e82c; font-size: 28px;"
+                   class="material-icons md-100">star</i>
+                <i *ngIf="star === false" style="font-size: 28px;"
+                   class="material-icons md-100">star_border</i>
+        </span>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+
+      <div class="col-xs-12 text-center">
+        <button mat-raised-button color="primary" (click)="onEdit()">Edit</button>
+        <button mat-raised-button color="warn" (click)="onDelete(player.name)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
